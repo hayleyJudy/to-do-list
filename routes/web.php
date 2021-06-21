@@ -22,6 +22,13 @@ Route::get('/', function () {
 //     return view('dashboard');
 // })->name('dashboard');
 
+/*
+    We have grouped all routes so we can apply "auth:sanctum" and 
+    "verified" middleware to all routes thereby restricting those pages to only verified, logged in users.
+
+    We have modified route for dashboard, which will now pass request to 
+    TaskController's Index function. And created routes for other actions.
+*/
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/dashboard',[TasksController::class, 'index'])->name('dashboard');
 

@@ -62,6 +62,6 @@ class User extends Authenticatable
 
     public function tasks()
     {
-    	return $this->hasMany(Task::class);
+    	return $this->hasMany(Task::class); //one User has many Tasks (One-to-Many Relationship)
     }
 }

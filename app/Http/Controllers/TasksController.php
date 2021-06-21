@@ -20,7 +20,7 @@ class TasksController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'description' => 'required'
+            'description' => 'required' //no empty Description
         ]);
     	$task = new Task();
     	$task->description = $request->description;
