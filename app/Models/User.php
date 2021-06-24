@@ -64,4 +64,14 @@ class User extends Authenticatable
     {
     	return $this->hasMany(Task::class); //one User has many Tasks (One-to-Many Relationship)
     }
+
+    public function googleAccounts()
+    {
+        return $this->hasMany(GoogleAccount::class);
+    }
+
+    public function dashboard()
+    {
+        return $this->belongsTo(Dashboard::class);
+    }
 }

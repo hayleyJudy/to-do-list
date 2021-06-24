@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TasksController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SendEmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +32,8 @@ Route::get('/', function () {
     TaskController's Index function. And created routes for other actions.
 */
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
-    Route::get('/dashboard',[TasksController::class, 'index'])->name('dashboard');
+    Route::get('/list',[TasksController::class, 'index'])->name('list');
+    Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/task',[TasksController::class, 'add']);
     Route::post('/task',[TasksController::class, 'create']);
@@ -38,3 +41,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/task/{task}', [TasksController::class, 'edit']);
     Route::post('/task/{task}', [TasksController::class, 'update']);
 });
+
+//Send email
+Route::post('/send-email', [SendEmailController::class, 'sendemail']);
+Route::get('/send-email', [SendEmailController::class, 'index'])->name('send-email');
+
+// Managing Google accounts.
+Route::name('google.index')->get('google', 'GoogleAccountController@index');
+Route::name('google.store')->get('google/oauth', 'GoogleAccountController@store');
+Route::name('google.destroy')->delete('google/{googleAccount}', 'GoogleAccountController@destroy');

@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Task;
+use Carbon\Carbon;
 
 class TasksController extends Controller
 {
     public function index()
     {
         $tasks = auth()->user()->tasks();
-        return view('dashboard', compact('tasks'));
+        return view('list', compact('tasks'));
     }
     public function add()
     {
@@ -20,13 +21,16 @@ class TasksController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'description' => 'required' //no empty Description
+            'description' => 'required'
         ]);
     	$task = new Task();
     	$task->description = $request->description;
+        $task->date = $request->date;
+        $task->status = $request->status;
+        // $task->date = Carbon::createFromFormat('Y-m-d', $myDate)->format('Y-m-d');
     	$task->user_id = auth()->user()->id;
     	$task->save();
-    	return redirect('/dashboard'); 
+    	return redirect('/list'); 
     }
 
     public function edit(Task $task)
@@ -37,7 +41,7 @@ class TasksController extends Controller
                 return view('edit', compact('task'));
         }           
         else {
-             return redirect('/dashboard');
+             return redirect('/list');
          }            	
     }
 
@@ -45,7 +49,7 @@ class TasksController extends Controller
     {
     	if(isset($_POST['delete'])) {
     		$task->delete();
-    		return redirect('/dashboard');
+    		return redirect('/list');
     	}
     	else
     	{
@@ -53,8 +57,10 @@ class TasksController extends Controller
                 'description' => 'required'
             ]);
     		$task->description = $request->description;
+            $task->date = $request->date;
+            $task->status = $request->status;
 	    	$task->save();
-	    	return redirect('/dashboard'); 
+	    	return redirect('/list'); 
     	}    	
     }
 }

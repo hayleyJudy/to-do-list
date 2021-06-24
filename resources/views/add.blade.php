@@ -14,12 +14,20 @@
                 <div class="form-group">
                     <textarea name="description" class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"  placeholder='Enter your task'></textarea>  
                     @if ($errors->has('description'))
-                        <span class="text-danger">{{ $errors->first('description') }}</span>
+                        <span class="text-danger" style="color:red">{{ $errors->first('description') }}</span>
                     @endif
                 </div>
 
                 <div class="form-group">
+                    <label for="Student">Due Date:</label>
+                    <input type="date" name="date">
+                </div>
+                
+                <div class="form-group">
                     <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Task</button>
+                    <a href="{{route('list')}}">
+                        <input type= "button" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" value="Cancel">
+                    </a>
                 </div>
                 {{ csrf_field() }}
             </form>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTasksTable extends Migration
+class AddDateToTasksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('description');
-            $table->integer('user_id')->unsigned()->index();
-            $table->timestamps(); //columns in DB: created_at & updated_at
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->string('date')->after('description');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateTasksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->string('date')->after('description');
+        });
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTasksTable extends Migration
+class CreateSendEmailTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::table('sendemail', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('description');
-            $table->integer('user_id')->unsigned()->index();
+            $table->string('email');
+            $table->string('client_name');
+            $table->string('subject');
+            $table->string('text');
             $table->timestamps(); //columns in DB: created_at & updated_at
         });
     }
@@ -28,6 +30,8 @@ class CreateTasksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');
+        Schema::table('sendemail', function (Blueprint $table) {
+            Schema::dropIfExists('tasks');
+        });
     }
 }
