@@ -35,7 +35,7 @@
                             {{$task->date}}
                         </td>
                         <td class="p-3 px-5">
-                            <p>Finished</p>
+                            {{$task->status}}
                         </td>
                         <td class="p-3 px-5">
                             
