@@ -22,10 +22,10 @@
             border-bottom:1px solid grey;
             padding:10px;
         }
-        a{
+        .link{
             text-decoration:underline;
         }
-        a:hover{
+        .link:hover{
             color:green;
         }
     </style>
@@ -35,7 +35,7 @@
             <div class="flex">
                 <div class="flex-auto text-2xl mb-4">Today's Tasks</div>
                 <div class="flex-auto text-right mb-4">
-                    <a href="{{ route('send-email') }}">Send Email Task</a>
+                    <a class="link" href="{{ route('send-email') }}">Send Email Task</a>
                 </div>
                 <div class="flex-auto text-right mb-4">
                     <a href="/task">
@@ -47,7 +47,7 @@
                 @if(Carbon\Carbon::parse($task->date)->format('Y-m-d') == Carbon\Carbon::today()->format('Y-m-d') )
                     <div class="flex">
                         <div class="flex-child flex-auto mb-4">
-                            {{$task->description}}
+                            {{$task->description}} 
                         </div>
                         <div class="flex-child flex-auto text-right mb-4">
                             {{$task->status}}

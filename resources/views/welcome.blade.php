@@ -31,6 +31,9 @@
             .title {
                 font-size: 84px;
             }
+            .content{
+                
+            }
 
             .links > a {
                 color: #636b6f;
@@ -81,6 +84,7 @@
             </div>
             <div class="grid-item right">
                 <p class="title">To-Do List</p>
+                <p class="content">An app to list all your task and send your to-do list through email.</p>
             </div>
         <div>
         

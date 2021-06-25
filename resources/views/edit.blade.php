@@ -35,7 +35,7 @@
 
                 <div class="form-group">
                     <label for="date">Date:</label>
-                    <input type="date" id="date" name="date" value="$task->date" class="bg-gray-100 rounded border border-gray-400 leading-normal h-10 py-1 px-2 font-medium placeholder-gray-700 focus:outline-none focus:bg-white">
+                    <input type="date" id="date" name="date" value="{{Carbon\Carbon::parse($task->date)->format('Y-m-d')}}" class="bg-gray-100 rounded border border-gray-400 leading-normal h-10 py-1 px-2 font-medium placeholder-gray-700 focus:outline-none focus:bg-white">
                     @if ($errors->has('date'))
                         <span class="text-danger" style="color:red">{{ $errors->first('date') }}</span>
                     @endif
