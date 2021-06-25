@@ -13,7 +13,12 @@ class SendEmailController extends Controller
         return view('send-email');
     }
 
-    public function sendmail(Request $request){
+    public function sendemail()
+    {
+    	return view('send-email');
+    }
+
+    public function saveToDb(Request $request){
         $data["email"]=$request->get("email");
         $data["client_name"]=$request->get("client_name");
         $data["subject"]=$request->get("subject");

@@ -22,10 +22,10 @@
             border-bottom:1px solid grey;
             padding:10px;
         }
-        .link{
+        .link-email{
             text-decoration:underline;
         }
-        .link:hover{
+        .link-email:hover{
             color:green;
         }
     </style>
@@ -35,7 +35,7 @@
             <div class="flex">
                 <div class="flex-auto text-2xl mb-4">Today's Tasks</div>
                 <div class="flex-auto text-right mb-4">
-                    <a class="link" href="{{ route('send-email') }}">Send Email Task</a>
+                    <a class="link-email" href="{{ url('/send-email') }}">Send Email Task</a>
                 </div>
                 <div class="flex-auto text-right mb-4">
                     <a href="/task">
