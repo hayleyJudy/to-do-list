@@ -13,7 +13,7 @@ class CreateSendEmailTable extends Migration
      */
     public function up()
     {
-        Schema::table('sendemail', function (Blueprint $table) {
+        Schema::create('send_email', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('email');
             $table->string('client_name');
@@ -30,8 +30,8 @@ class CreateSendEmailTable extends Migration
      */
     public function down()
     {
-        Schema::table('sendemail', function (Blueprint $table) {
-            Schema::dropIfExists('tasks');
+        Schema::table('send_email', function (Blueprint $table) {
+            Schema::dropIfExists('sendemail');
         });
     }
 }

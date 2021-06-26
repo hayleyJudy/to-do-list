@@ -14,7 +14,7 @@ class AddDateToTasksTable extends Migration
     public function up()
     {
         Schema::table('tasks', function (Blueprint $table) {
-            $table->string('date')->after('description');
+            $table->string('date')->after('description')->nullable();
         });
     }
 
@@ -27,6 +27,7 @@ class AddDateToTasksTable extends Migration
     {
         Schema::table('tasks', function (Blueprint $table) {
             $table->string('date')->after('description');
+            
         });
     }
 }
