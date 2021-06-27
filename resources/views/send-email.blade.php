@@ -5,6 +5,14 @@
     </h2>
 </x-slot>
 
+<script>
+    var msg = '{{Session::get('alert')}}';
+    var exist = '{{Session::has('alert')}}';
+    if(exist){
+      alert(msg);
+    }
+</script>
+
 <style>
     .form-group{
         padding-bottom:20px
@@ -21,15 +29,21 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-5">
             
-            <form method="POST" action="/send-email" >
+            <form method="POST">
                 <div class="form-group">
                     <label for="to">To:</label>
                     <input type="text" name="to" class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none h-10 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white">
+                    @if ($errors->has('to'))
+                        <span class="text-danger" style="color:red">{{ $errors->first('to') }}</span>
+                    @endif
                 </div>
 
                 <div class="form-group">
                     <label for="subject">Subject:</label>
                     <input type="text" name="subject" class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-64 h-10 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white">
+                    @if ($errors->has('subject'))
+                        <span class="text-danger" style="color:red">{{ $errors->first('subject') }}</span>
+                    @endif
                 </div>
 
                 <div class="form-group">

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 use App\Models\Task;
+use App\Models\Dashboard;
+use App\Models\Mails;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -73,6 +75,11 @@ class User extends Authenticatable
     public function dashboard()
     {
         return $this->belongsTo(Dashboard::class);
+    }
+
+    public function mails()
+    {
+        return $this->hasMany(Mails::class);
     }
 
 }

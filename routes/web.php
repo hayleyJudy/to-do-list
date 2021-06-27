@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TasksController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SendEmailController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 Route::get('/send-email', [SendEmailController::class, 'index'])->name('send-email');
 Route::get('/send-email',[SendEmailController::class, 'sendemail']);
 Route::post('/send-email',[SendEmailController::class, 'saveToDb']);
+
+Route::get('/send-markdown-mail', [MailController::class, 'sendOfferMail']);
 
 // Managing Google accounts.
 Route::name('google.index')->get('google', 'GoogleAccountController@index');

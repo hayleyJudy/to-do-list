@@ -39,7 +39,15 @@
                    
                 </div>
                 
-                <input name="status" type="hidden" value="To Do">
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select id="status" name="status" class="bg-gray-100 rounded border border-gray-400 leading-normal h-10 py-1 px-2 font-medium placeholder-gray-700 focus:outline-none focus:bg-white">
+                        <option value="To Do" selected>To Do</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Ongoing">Ongoing</option>
+                        <option value="On Hold">On Hold</option>
+                    </select>
+                </div>
 
                 <div class="form-group" style="text-align:center">
                     <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Task</button>

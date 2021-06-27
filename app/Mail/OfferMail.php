@@ -7,21 +7,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SendMail extends Mailable
+class OfferMail extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $details;
-
+    public $offer;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($details)
+    public function __construct($offer)
     {
-        $this->details = $details;
+        $this->offer = $offer;
     }
 
     /**
@@ -31,8 +29,7 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Mail from Laravel 8 Gmail')
-            ->view('emails.gmail')
-            ->from('Kingsconsult001@gmail.com');
+        return $this->markdown('emails.offerSendMail')
+            ->with('offer', $this->offer);
     }
 }
