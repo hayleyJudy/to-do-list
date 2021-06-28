@@ -49,7 +49,7 @@
                     </a>
                 </div> -->
             </div>
-            @foreach(auth()->user()->tasks as $task)
+            @foreach(auth()->user()->tasks->sortByDesc('updated_by') as $task)
                 @if(Carbon\Carbon::parse($task->date)->format('Y-m-d') == Carbon\Carbon::today()->format('Y-m-d') )
                     <div class="flex">
                         <div class="flex-child flex-auto mb-4">
@@ -77,7 +77,7 @@
                     </a>
                 </div> -->
             </div>
-            @foreach(auth()->user()->tasks as $task)
+            @foreach(auth()->user()->tasks->sortByDesc('updated_by') as $task)
                 @if($task->status == "To Do" )
                     <div class="flex">
                         <div class="flex-child flex-auto mb-4">
@@ -105,7 +105,7 @@
                     </a>
                 </div> -->
             </div>
-            @foreach(auth()->user()->tasks as $task)
+            @foreach(auth()->user()->tasks->sortByDesc('updated_by') as $task)
                 @if($task->status == "Completed" )
                     <div class="flex">
                         <div class="flex-child flex-auto mb-4">
@@ -134,7 +134,7 @@
                     </a>
                 </div> -->
             </div>
-            @foreach(auth()->user()->tasks as $task)
+            @foreach(auth()->user()->tasks->sortByDesc('updated_by') as $task)
                 @if($task->status == "Ongoing" )
                     <div class="flex">
                         <div class="flex-child flex-auto mb-4">
@@ -163,7 +163,8 @@
                     </a>
                 </div> -->
             </div>
-            @foreach(auth()->user()->tasks as $task)
+            <!-- $data = auth()->user()->tasks->sortByDesc('second_column')->sortBy('is_active'); -->
+            @foreach(auth()->user()->tasks->sortByDesc('updated_by') as $task)
                 @if($task->status == "On Hold" )
                     <div class="flex">
                         <div class="flex-child flex-auto mb-4">

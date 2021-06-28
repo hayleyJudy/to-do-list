@@ -15,6 +15,9 @@
     textarea{
         height:150px;
     }
+    select{
+        width:200px;
+    }
 </style>
 
 <div class="py-12">

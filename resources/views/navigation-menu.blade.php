@@ -155,7 +155,7 @@
                 {{ __('List') }}
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ url('/send-email') }}" :active="request()->routeIs('/send-email')">
-                {{ __('Send Tasks') }}
+                {{ __('Send Email') }}
             </x-jet-responsive-nav-link>
         </div>
 
